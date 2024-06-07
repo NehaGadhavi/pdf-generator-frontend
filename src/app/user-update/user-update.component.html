@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Edit User</h2>
+<div mat-dialog-content>
+  <form (ngSubmit)="updateUser()" #updateUserForm="ngForm">
+    <mat-form-field>
+      <input matInput placeholder="Name" [(ngModel)]="user.name" name="name" required>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Email" [(ngModel)]="user.email" name="email" required email>
+      <mat-error *ngIf="updateUserForm.controls['email'].errors && updateUserForm.controls['email'].errors['email']">
+        Invalid email format
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Phone" [(ngModel)]="user.phone" name="phone" required maxlength="10">
+      <mat-error *ngIf="updateUserForm.controls['phone'].errors && updateUserForm.controls['phone'].errors['maxlength']">
+        Phone number cannot exceed 10 digits
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Address" [(ngModel)]="user.address" name="address" required>
+    </mat-form-field>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="dialogRef.close()">Cancel</button>
+  <button mat-button [mat-dialog-close]="true" [disabled]="!updateUserForm.valid">Save</button>
+</div>

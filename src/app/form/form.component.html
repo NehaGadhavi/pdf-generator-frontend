@@ -1,0 +1,45 @@
+<form class="row g-3 needs-validation" [formGroup]="userForm">
+    <div class="col-md-12">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" formControlName="name">
+        <div class="text-danger"
+            *ngIf="userForm.controls['name'].invalid && (isFormSubmitted || userForm.controls['name'].touched || userForm.controls['name'].dirty)">
+            <span *ngIf="userForm.controls['name'].errors?.['required']">Name cannot be empty!</span>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <label class="form-label">Email</label>
+        <div class="input-group has-validation">
+            <input type="text" class="form-control" formControlName="email">
+        </div>
+        <div class="text-danger"
+            *ngIf="userForm.controls['email'].invalid  && (userForm.controls['email'].touched || userForm.controls['email'].dirty)">
+            <span *ngIf="userForm.controls['email'].errors?.['required']"> Email connot be empty! </span>
+            <span *ngIf="userForm.controls['email'].errors?.['email']"> Invalid email entered! </span>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <label class="form-label">Phone</label>
+        <div class="input-group has-validation">
+            <input type="text" class="form-control" formControlName="phone">
+        </div>
+        <div class="text-danger"
+            *ngIf="userForm.controls['phone'].invalid  && (userForm.controls['phone'].touched || userForm.controls['phone'].dirty)">
+            <span *ngIf="userForm.controls['phone'].errors?.['required']"> Phone number connot be empty! </span>
+            <span *ngIf="userForm.controls['phone'].errors?.['phone']"> Invalid phone number entered! </span>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <label class="form-label">Address</label>
+        <div class="input-group has-validation">
+            <input type="text" class="form-control" formControlName="address">
+        </div>
+        <div class="text-danger"
+            *ngIf="userForm.controls['address'].invalid  && (userForm.controls['address'].touched || userForm.controls['address'].dirty)">
+            <span *ngIf="userForm.controls['address'].errors?.['required']"> Address connot be empty! </span>
+        </div>
+    </div>
+    <div class="col-12">
+        <button class="btn btn-primary" type="button" (click)="onSubmit()">Submit form</button>
+    </div>
+</form>
